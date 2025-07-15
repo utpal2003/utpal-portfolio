@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaStar } from 'react-icons/fa'; // For the decorative star on the main form
 import { BsCheckCircleFill } from 'react-icons/bs'; // For the success icon in the popup
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // Intersection Observer Hook
@@ -67,7 +67,14 @@ const Contact = () => {
     setIsLoading(true); // start loader
 
     try {
-      const res = await fetch('http://localhost:5000/api/connect', {
+      //for send data into the backend ////////
+      // const res = await fetch('http://localhost:5000/api/connect', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData),
+      // });
+      /////////////send data to the fronted setup mean serverless setup
+      const res = await fetch('/api/connect', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -245,7 +252,7 @@ const Contact = () => {
                            hover:bg-gradient-to-r from-orange-500 to-yellow-500 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:focus:ring-orange-800
                            relative overflow-hidden group"
               >
-                <span className="relative z-10">{isLoading ? 'Submitting...':'GET IN TOUCH'}</span>
+                <span className="relative z-10">{isLoading ? 'Submitting...' : 'GET IN TOUCH'}</span>
                 <span className="absolute left-0 bottom-0 h-1 w-full bg-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </button>
 
