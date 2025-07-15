@@ -25,19 +25,28 @@ const projects = [
         link: "https://utpal-portfolio.vercel.app/"
     },
     {
-        id: 4, 
+        id: 4,
         title: "ONLINE QUIZ SYSTEM",
         image: "../../public/quiz.png",
         languages: ["React", "TailwindCSS"],
         link: "https://utpal-portfolio.vercel.app/"
     },
     {
-        id: 5, 
+        id: 5,
         title: "HR MANAGEMENT SYSTEM",
-        image: "../../public/hrmanage.png", 
+        image: "../../public/hrmanage.png",
         languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
-        link: "https://utpal-portfolio.vercel.app/"
+        link: "https://glistening-taiyaki-43eaf0.netlify.app/admin-dashboard"
     },
+    {
+        id: 6,
+        title: "TIC TAC TOE GAME",
+        image: "",
+        languages: ["HTML", "CSS", "JavaScript"],
+        link: "https://tic-tac-toe-game-one-bice.vercel.app/"
+    }
+
+
 ];
 
 const Projects = () => {
@@ -72,7 +81,7 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="py-20 px-4 sm:px-6 md:px-10  bg-gray-50 dark:bg-gray-900 min-h-screen" 
+            className="py-20 px-4 sm:px-6 md:px-10  bg-gray-50 dark:bg-gray-900 min-h-screen"
         >
             <div className="max-w-6xl mx-auto">
                 <motion.h2
