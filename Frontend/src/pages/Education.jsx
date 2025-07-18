@@ -138,7 +138,7 @@ const Education = () => {
                             <img
                                 src={schoolPhoto}
                                 alt="High School"
-                                className="w-full h-full object-cover object-center brightness-150 md:brightness-100 transition-transform duration-300"
+                                className="w-full h-full object-cover object-center brightness-150 md:brightness-100 transition-transform duration-300 "
                             />
                             <div className="absolute inset-0 bg-black opacity-30 md:hidden" />
                         </div>
