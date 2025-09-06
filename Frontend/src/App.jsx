@@ -1,6 +1,6 @@
 
 import './App.css'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 import Education from './pages/Education'
 import Home from './pages/Home'
 import Projects from './pages/Projects'

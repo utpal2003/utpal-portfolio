@@ -5,7 +5,7 @@ const { sendHiremeEmail, sendconnectEmail } = require('../utilemails/sendemails'
 // Hire Me route
 router.post('/hireme', async (req, res) => {
     const { fullName, email, company, jobDetails } = req.body;
-    console.log('Hireme data received:', req.body);
+    // console.log('Hireme data received:', req.body);
 
     if (!fullName || !email || !jobDetails) {
         console.log('Validation failed');
@@ -25,7 +25,7 @@ router.post('/hireme', async (req, res) => {
 // Connect With Me route
 router.post('/connect', async (req, res) => {
     const { name, surname, phoneNumber, email, message } = req.body;
-    console.log(name, surname, phoneNumber, email, message );
+    // console.log(name, surname, phoneNumber, email, message );
 
     if (!name || !surname || !phoneNumber || !email || !message) {
         return res.status(400).json({ error: 'All fields are required' });

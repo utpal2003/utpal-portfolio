@@ -63,7 +63,7 @@ const Contact = () => {
       });
       return;
     }
-    console.log(formData);
+    // console.log(formData);
     setIsLoading(true); // start loader
 
     try {

@@ -60,7 +60,7 @@ const Hireme = ({ isOpen, onClose }) => {
                 autoClose: 3000,
                 theme: "colored",
             });
-            console.error("POST /api/hireme failed:", err);
+            // console.error("POST /api/hireme failed:", err);
         }
     };
 
