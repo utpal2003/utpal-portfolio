@@ -49,34 +49,28 @@ const Contact = () => {
 
     const { name, surname, email, phoneNumber, message } = formData;
 
-    // Basic validation
+    // ✅ Basic validation
     if (!name.trim() || !surname.trim() || !email.trim() || !phoneNumber.trim() || !message.trim()) {
-      toast.error('Please enter all the fields', {
-        position: 'top-right',
+      toast.error("Please enter all the fields", {
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'colored',
+        theme: "colored",
       });
       return;
     }
-
+    console.log(formData);
     setIsLoading(true); // start loader
 
     try {
-      //for send data into the backend ////////
-      // const res = await fetch('http://localhost:5000/api/connect', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
-      /////////////send data to the fronted setup mean serverless setup
-      const res = await fetch('/api/connect', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+
+      const res = await fetch("http://localhost:5000/api/connect", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -85,17 +79,26 @@ const Contact = () => {
       if (res.ok) {
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 5000);
-        setFormData({ name: '', surname: '', phoneNumber: '', email: '', message: '' });
+
+        // ✅ Reset form
+        setFormData({
+          name: "",
+          surname: "",
+          phoneNumber: "",
+          email: "",
+          message: "",
+        });
       } else {
-        toast.error(data.message || 'Submission failed!');
+        toast.error(data.message || "Submission failed!");
       }
     } catch (error) {
-      console.error('Error sending data:', error);
-      toast.error('Something went wrong. Please try again later.');
+      console.error("Error sending data:", error);
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setIsLoading(false); // stop loader
     }
   };
+
 
 
 

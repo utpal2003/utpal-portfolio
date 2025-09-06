@@ -109,11 +109,14 @@ const Projects = () => {
                             className="relative group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-700 ease-in-out transform hover:-translate-y-2 hover:scale-105 border border-gray-200 dark:border-gray-700 cursor-pointer" // Card background adjusted for solid colors
                             onClick={() => window.open(link, "_blank")} // Makes the whole card clickable
                         >
-                            <img
-                                src={image}
-                                alt={title}
-                                className="w-full h-56 object-fit  transform group-hover:scale-110 transition duration-700 ease-in-out"
-                            />
+                            {image && (
+                                <img
+                                    src={image}
+                                    alt={title}
+                                    className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-700 ease-in-out"
+                                />
+                            )}
+
                             <div className="p-6 text-gray-800 dark:text-white">
                                 <h3 className="text-2xl font-bold mb-3 text-indigo-700 dark:text-teal-400">{title}</h3>
                                 <p className="text-base text-gray-700 dark:text-gray-300">

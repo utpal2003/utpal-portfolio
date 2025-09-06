@@ -7,7 +7,7 @@ const Hireme = ({ isOpen, onClose }) => {
 
     const [hiremeFormData, setHiremeFormData] = useState({
         fullName: '',
-        email: '',       // ✅ Fixed: use 'email' instead of 'contactEmail'
+        email: '',      
         company: '',
         jobDetails: '',
     });

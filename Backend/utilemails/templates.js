@@ -69,7 +69,7 @@ exports.WELCOME_TEMPLATE = (name) => `
       <p>I truly appreciate your interest in my work. It's always exciting to connect with people who value creativity, tech, and collaboration.</p>
       <p>I'll get back to you as soon as possible. Until then, feel free to browse through my projects and explore more of what I do.</p>
       <div class="cta">
-        <a href="https://your-portfolio-link.com" target="_blank">Explore My Portfolio</a>
+        <a href="https://google.com" target="_blank">Explore My Portfolio</a>
       </div>
     </div>
     <div class="footer">
