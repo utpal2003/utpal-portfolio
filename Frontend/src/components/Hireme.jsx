@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+
 const Hireme = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
@@ -31,7 +32,7 @@ const Hireme = ({ isOpen, onClose }) => {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/api/hireme", {
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/hireme`, {
                 fullName,
                 email,
                 company,
