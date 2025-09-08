@@ -241,32 +241,29 @@ const Contact = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="relative bg-black dark:bg-gray-950 p-8 pt-10 mt-6 md:mt-0">
-            <div className="absolute top-0 left-0 right-0 h-10 bg-white dark:bg-gray-800 transform origin-top-left -skew-y-3 z-0 -mt-5"></div>
-
-
-            <div className="flex justify-center items-center relative z-10">
-
-
-              <button
-                type="submit"
-                className="w-full md:w-auto px-10 py-4 bg-green-600 dark:bg-gray-700 text-white text-lg font-bold rounded-lg shadow-lg
-                           transition-all duration-300 transform hover:scale-105
-                           hover:bg-gradient-to-r from-orange-500 to-yellow-500 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:focus:ring-orange-800
-                           relative overflow-hidden group"
-              >
-                <span className="relative z-10">{isLoading ? 'Submitting...' : 'GET IN TOUCH'}</span>
-                <span className="absolute left-0 bottom-0 h-1 w-full bg-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </button>
-
-
-
-            </div>
-
-
-
-
+          <div className="relative flex justify-center items-center p-8 mt-6">
+            <button
+              type="submit"
+              className="
+      w-full md:w-auto px-10 py-4
+      bg-gradient-to-r from-purple-600 to-pink-500 text-white
+      text-lg font-bold rounded-full
+      shadow-2xl shadow-purple-500/50
+      transition-all duration-500
+      transform
+      hover:scale-105 hover:shadow-pink-500/50
+      focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-pink-800
+      relative overflow-hidden group
+    "
+            >
+              <span className="relative z-10 tracking-wide">
+                {isLoading ? 'Submitting...' : 'GET IN TOUCH'}
+              </span>
+              {/* Optional: Add a subtle animated pulse on hover */}
+              <span className="absolute inset-0 bg-white opacity-0 transform scale-0 rounded-full group-hover:scale-125 group-hover:opacity-10 transition-all duration-700"></span>
+            </button>
           </div>
+
         </form>
       </div>
 

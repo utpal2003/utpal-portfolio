@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
-import ChatBot from "./ChatBot"; // Assuming ChatBot is in the same directory or correctly imported
+import ChatBot from "./ChatBot"; 
 
 const AnimatedBot = () => {
   const [isOpen, setIsOpen] = useState(false);

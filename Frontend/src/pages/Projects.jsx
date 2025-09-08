@@ -1,53 +1,52 @@
 import React from 'react';
 import { motion } from 'framer-motion'; // For more advanced animations
-import { useInView } from 'react-intersection-observer'; // For scroll-triggered animations
+import { useInView } from 'react-intersection-observer'; 
 
 const projects = [
-    {
-        id: 1,
-        title: "JOB HIVE",
-        image: "../../public/jobhive.png", // Ensure these paths are correct in your project structure
-        languages: ["React", "Node.js", "Express.js", "MongoDB"],
-        link: "https://github.com/utpal2003/online-exam-system"
-    },
-    {
-        id: 2,
-        title: "Online Voting System",
-        image: "../../public/Backend.png",
-        languages: ["Node.js", "Express.js", "MongoDB"],
-        link: "https://github.com/utpal2003/library-management-c"
-    },
-    {
-        id: 3,
-        title: "Portfolio Website",
-        image: "/projects/portfolio.png",
-        languages: ["React", "TailwindCSS"],
-        link: "https://utpal-portfolio.vercel.app/"
-    },
-    {
-        id: 4,
-        title: "ONLINE QUIZ SYSTEM",
-        image: "../../public/quiz.png",
-        languages: ["React", "TailwindCSS"],
-        link: "https://utpal-portfolio.vercel.app/"
-    },
-    {
-        id: 5,
-        title: "HR MANAGEMENT SYSTEM",
-        image: "../../public/hrmanage.png",
-        languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
-        link: "https://glistening-taiyaki-43eaf0.netlify.app/admin-dashboard"
-    },
-    {
-        id: 6,
-        title: "TIC TAC TOE GAME",
-        image: "",
-        languages: ["HTML", "CSS", "JavaScript"],
-        link: "https://tic-tac-toe-game-one-bice.vercel.app/"
-    }
-
-
+  {
+    id: 1,
+    title: "JOB HIVE",
+    image: "/jobhive.png",  
+    languages: ["React", "Node.js", "Express.js", "MongoDB"],
+    link: "https://github.com/utpal2003/online-exam-system"
+  },
+  {
+    id: 2,
+    title: "Online Voting System",
+    image: "/Backend.png",  
+    languages: ["Node.js", "Express.js", "MongoDB"],
+    link: "https://github.com/utpal2003/library-management-c"
+  },
+  {
+    id: 3,
+    title: "Portfolio Website",
+    image: "/projects/portfolio.png", 
+    languages: ["React", "TailwindCSS"],
+    link: "https://utpal-portfolio.vercel.app/"
+  },
+  {
+    id: 4,
+    title: "ONLINE QUIZ SYSTEM",
+    image: "/quiz.png",  
+    languages: ["React", "TailwindCSS"],
+    link: "https://utpal-portfolio.vercel.app/"
+  },
+  {
+    id: 5,
+    title: "HR MANAGEMENT SYSTEM",
+    image: "/hrmanage.png",  
+    languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
+    link: "https://glistening-taiyaki-43eaf0.netlify.app/admin-dashboard"
+  },
+  {
+    id: 6,
+    title: "TIC TAC TOE GAME",
+    image: "", 
+    languages: ["HTML", "CSS", "JavaScript"],
+    link: "https://tic-tac-toe-game-one-bice.vercel.app/"
+  }
 ];
+
 
 const Projects = () => {
     // Animation variants for Framer Motion
@@ -68,14 +67,14 @@ const Projects = () => {
 
     // For scroll-triggered animation for the main title
     const { ref: titleRef, inView: titleInView } = useInView({
-        triggerOnce: true, // Animation triggers only once when it comes into view
-        threshold: 0.5, // Trigger when 50% of the element is visible
+        triggerOnce: true, 
+        threshold: 0.5,
     });
 
     // For scroll-triggered animation for project cards
     const { ref: projectsRef, inView: projectsInView } = useInView({
         triggerOnce: true,
-        threshold: 0.1, // Trigger when 10% of the element is visible
+        threshold: 0.1, 
     });
 
     return (
