@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
+import { ImCancelCircle } from "react-icons/im";
 
 const Hireme = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
@@ -66,12 +66,7 @@ const Hireme = ({ isOpen, onClose }) => {
 
     return (
         <>
-            <link
-                rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/react-toastify/10.0.5/ReactToastify.min.css"
-                crossOrigin="anonymous"
-                referrerPolicy="no-referrer"
-            />
+
 
             <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm bg-black bg-opacity-50 animate-fade-in-overlay">
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 w-[90%] max-w-md relative animate-popup-enter transform transition-all duration-300">
@@ -80,7 +75,7 @@ const Hireme = ({ isOpen, onClose }) => {
                         className="absolute top-4 right-4 text-gray-500 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 text-3xl font-bold transition-colors duration-200"
                         aria-label="Close"
                     >
-                        &times;
+                        <ImCancelCircle size={20}/>
                     </button>
 
                     <h3 className="text-2xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6">
@@ -152,7 +147,7 @@ const Hireme = ({ isOpen, onClose }) => {
                             type="submit"
                             className="w-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-md shadow-md transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         >
-                            Submit Request
+                            Submit
                         </button>
                     </form>
                 </div>

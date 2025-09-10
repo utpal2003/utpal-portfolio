@@ -38,9 +38,14 @@ const Navbar = () => {
         }`}
     >
       <nav className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-        <div className="text-xl md:text-2xl font-bold text-blue-700 dark:text-cyan-400">
+        <div
+          className="text-xl md:text-2xl font-bold 
+             bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+             bg-clip-text text-transparent"
+        >
           UTPAL BARMAN
         </div>
+
 
         {/* Desktop Nav */}
         <ul className="hidden md:flex gap-8 font-medium text-base items-center">
@@ -140,6 +145,7 @@ const Navbar = () => {
           width: 100% !important;
         }
       `}</style>
+      
     </header>
   );
 };

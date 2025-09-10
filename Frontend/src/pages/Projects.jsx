@@ -1,50 +1,67 @@
 import React from 'react';
 import { motion } from 'framer-motion'; // For more advanced animations
-import { useInView } from 'react-intersection-observer'; 
+import { useInView } from 'react-intersection-observer';
 
 const projects = [
-  {
-    id: 1,
-    title: "JOB HIVE",
-    image: "/jobhive.png",  
-    languages: ["React", "Node.js", "Express.js", "MongoDB"],
-    link: "https://github.com/utpal2003/online-exam-system"
-  },
-  {
-    id: 2,
-    title: "Online Voting System",
-    image: "/Backend.png",  
-    languages: ["Node.js", "Express.js", "MongoDB"],
-    link: "https://github.com/utpal2003/library-management-c"
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    image: "/projects/portfolio.png", 
-    languages: ["React", "TailwindCSS"],
-    link: "https://utpal-portfolio.vercel.app/"
-  },
-  {
-    id: 4,
-    title: "ONLINE QUIZ SYSTEM",
-    image: "/quiz.png",  
-    languages: ["React", "TailwindCSS"],
-    link: "https://utpal-portfolio.vercel.app/"
-  },
-  {
-    id: 5,
-    title: "HR MANAGEMENT SYSTEM",
-    image: "/hrmanage.png",  
-    languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
-    link: "https://glistening-taiyaki-43eaf0.netlify.app/admin-dashboard"
-  },
-  {
-    id: 6,
-    title: "TIC TAC TOE GAME",
-    image: "", 
-    languages: ["HTML", "CSS", "JavaScript"],
-    link: "https://tic-tac-toe-game-one-bice.vercel.app/"
-  }
+    {
+        id: 1,
+        title: "JOB HIVE",
+        image: "/jobhive.png",
+        languages: ["React", "Node.js", "Express.js", "MongoDB"],
+        link: "https://github.com/utpal2003/online-exam-system"
+    },
+    {
+        id: 2,
+        title: "HR MANAGEMENT SYSTEM",
+        image: "/hrms.png",
+        languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
+        link: "https://glistening-taiyaki-43eaf0.netlify.app/admin-dashboard"
+    },
+
+    {
+        id: 3,
+        title: "Online Voting System",
+        image: "/Backend.png",
+        languages: ["Node.js", "Express.js", "MongoDB"],
+        link: "https://github.com/utpal2003/library-management-c"
+    },
+    {
+        id: 4,
+        title: "Portfolio Website",
+        image: "/portfolio.png",
+        languages: ["React", "TailwindCSS","Express.js","NodeMailer"],
+        link: "https://utpal-portfolio-frontend.onrender.com/"
+    },
+    {
+        id: 5,
+        title: "Food Delivery",
+        image: "/Food-delivery.png",
+        languages: ["React", "Tailwind"],
+        link:""
+    },
+    {
+        id: 6,
+        title: "ONLINE QUIZ SYSTEM",
+        image: "/quiz.png",
+        languages: ["React", "TailwindCSS"],
+        link: ""
+    },
+
+    // {
+    //     id: 7,
+    //     title: "TIC TAC TOE GAME",
+    //     image: "",
+    //     languages: ["HTML", "CSS", "JavaScript"],
+    //     link: "https://tic-tac-toe-game-one-bice.vercel.app/"
+    // },
+       {
+        id: 7,
+        title: "Razorpay Integratin",
+        image: "",
+        languages: ["Nodejs","react","Razorpay"],
+        link: ""
+    }
+
 ];
 
 
@@ -67,14 +84,14 @@ const Projects = () => {
 
     // For scroll-triggered animation for the main title
     const { ref: titleRef, inView: titleInView } = useInView({
-        triggerOnce: true, 
+        triggerOnce: true,
         threshold: 0.5,
     });
 
     // For scroll-triggered animation for project cards
     const { ref: projectsRef, inView: projectsInView } = useInView({
         triggerOnce: true,
-        threshold: 0.1, 
+        threshold: 0.1,
     });
 
     return (
@@ -131,6 +148,15 @@ const Projects = () => {
                             </div>
                         </motion.div>
                     ))}
+
+                    <a href=""
+                        class="inline-block px-6 py-3 text-white font-semibold text-lg rounded-2xl 
+          bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg 
+          hover:from-pink-500 hover:to-purple-500 
+          transition duration-300 ease-in-out transform hover:scale-105 hover:underline">
+                        🚀 Click Here to Explore all Projects
+                    </a>
+
                 </motion.div>
             </div>
         </section>

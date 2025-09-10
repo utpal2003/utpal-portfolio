@@ -160,7 +160,7 @@ const Contact = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="p-8 pb-4 relative z-10">
-            <h2 className=" text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
+            <h2 className=" text-3xl sm:text-5xl font-extrabold text-purple-500 dark:text-white mb-6">
               Connect With  <span className="text-indigo-600 dark:text-indigo-400">Me</span>
             </h2>
           </div>
@@ -168,7 +168,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 px-8 py-4 relative z-10">
             {/* Name Field - Required */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name <span className="text-red-500">*</span></label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 name="name"
@@ -176,14 +176,14 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 className="mt-1 w-full border-b bg-transparent text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-200"
-                placeholder="Your Name"
+                placeholder="Your First Name"
 
               />
             </div>
 
             {/* Surname Field */}
             <div>
-              <label htmlFor="surname" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Surname<span className="text-red-500">*</span></label>
+              <label htmlFor="surname" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name<span className="text-red-500">*</span></label>
               <input
                 type="text"
                 name="surname"
@@ -191,7 +191,7 @@ const Contact = () => {
                 value={formData.surname}
                 onChange={handleChange}
                 className="mt-1 w-full border-b bg-transparent text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 pb-2 outline-none focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-200"
-                placeholder="Your Surname"
+                placeholder="Your Last Name"
               />
             </div>
 

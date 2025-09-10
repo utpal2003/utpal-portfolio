@@ -14,13 +14,13 @@ const Home = () => {
         {
             name: "LinkedIn",
             icon: FaLinkedin,
-            url: "https://www.linkedin.com/in/utpal-barman-2002/",
+            url: "https://www.linkedin.com/in/utpalbarman07/",
             color: "#0A66C2",
         },
         {
             name: "GitHub",
             icon: FaGithub,
-            url: "https://github.com/Utpal-Barman",
+            url: "https://github.com/utpal2003",
             color: "#181717",
         },
         {
@@ -32,19 +32,19 @@ const Home = () => {
         {
             name: "Facebook",
             icon: FaFacebook,
-            url: "https://www.facebook.com/utpal.barman.7315/",
+            url: "https://www.facebook.com/ut.p.al.148380/",
             color: "#1877F2",
         },
         {
             name: "Instagram",
             icon: FaInstagram,
-            url: "https://www.instagram.com/utpal_barman_2002/",
+            url: "https://www.instagram.com/say_utpal_18/",
             color: "#E1306C",
         },
         {
             name: "WhatsApp",
             icon: FaWhatsapp,
-            url: "https://wa.me/+917002573216",
+            url: "https://wa.me/+919064205304",
             color: "#25D366",
         },
     ];
@@ -99,13 +99,22 @@ const Home = () => {
             ))}
 
 
-            <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl mt-2 md:mt-0 gap-10 z-10 p-4 relative">
+            <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl mt-2 md:mt-0 gap-2 sm:gap-10 z-10 p-2 sm:p-4 relative">
                 {/* Text Section */}
                 <div className="text-center md:text-left mt-0 md:w-1/2">
-                    <h2 className="text-gray-900 dark:text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight animate-fade-in-down">
+                    <h2
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight animate-fade-in-down 
+               bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+               bg-clip-text text-transparent"
+                    >
                         Hi, I am Utpal Barman
                     </h2>
-                    <h1 className="text-cyan-700 dark:text-cyan-400 text-xl sm:text-2xl md:text-4xl mt-3 font-semibold animate-fade-in-up">
+
+                    <h1
+                        className="text-xl sm:text-2xl md:text-4xl mt-3 font-semibold animate-fade-in-up 
+               bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
+               bg-clip-text text-transparent"
+                    >
                         <Typewriter
                             options={{
                                 strings: ['A Web Developer', 'MERN STACK Developer', 'UI Designer', 'Video Editor'],
@@ -131,17 +140,23 @@ const Home = () => {
 
 
                         {/* My Resume Button */}
-                        <a href="#" className="w-full sm:w-auto flex-grow sm:flex-none">
+                        <a
+                            href="/UTPAL -portfolio-CV.pdf"
+                            download="Utpal-Barman-cv.pdf"
+                            className="w-full sm:w-auto flex-grow sm:flex-none"
+                        >
                             <button
                                 type="button"
-                                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:from-purple-600 hover:to-purple-800
-                                           focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
-                                           font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 shadow-md hover:scale-105
-                                           w-full"
+                                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 
+               hover:from-purple-600 hover:to-purple-800
+               focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
+               font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 
+               shadow-md hover:scale-105 w-full"
                             >
                                 My Resume
                             </button>
                         </a>
+
                     </div>
 
                     {/* Social Icons */}
@@ -186,16 +201,63 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* Image Section - Simplified for just the image and its immediate hover effect */}
-                <div className="md:w-1/2 flex justify-center items-center relative min-h-[300px] md:min-h-[400px] lg:min-h-[500px] animate-scale-in z-10">
-                    <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-indigo-500 dark:border-indigo-400 transition-all duration-300 hover:scale-105 hover:shadow-indigo-500/50">
-                        <img
-                            className="w-full h-full object-cover object-center"
-                            src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fwww.gravatar.com%2Favatar%2F2c7d99fe281ecd3bcd65ab915bac6dd5%3Fs%3D250"
-                            alt="Utpal Barman"
-                        />
+                {/* Image Section*/}
+                <div className="relative flex justify-center items-center min-h-[300px] md:min-h-[400px] lg:min-h-[500px] p-4">
+
+                    <div className="relative w-[12rem] h-[12rem] sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 p-1 rounded-full overflow-visible
+      group transform transition-all duration-500 ease-in-out
+      hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.4)]
+      ">
+
+                        {/* Gradient Glow Ring */}
+                        <div className="absolute inset-0 rounded-full
+          bg-gradient-to-r from-purple-700 via-indigo-700 to-pink-700
+          animate-spin-slow-gradient opacity-75
+          filter blur-xl
+          group-hover:opacity-100
+          transition-opacity duration-500">
+                        </div>
+
+                        {/* Profile Container */}
+                        <div className="relative w-full h-full rounded-full overflow-hidden
+          shadow-2xl border-4 border-white dark:border-gray-800
+          bg-white dark:bg-gray-900
+          transform transition-all duration-500 ease-in-out
+          group-hover:scale-95">
+
+                            {/* Profile Image */}
+                            {/* <img
+                                className="w-full h-full object-cover object-top filter grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                                src="/MY-PHOTO.jpeg"
+                                alt="Utpal Barman"
+                            /> */}
+                            <img
+  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-110"
+  src="/MY-PHOTO.jpeg"
+  alt="Utpal Barman"
+/>
+
+
+
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full"></div>
+                        </div>
                     </div>
+
+                    {/* React style block */}
+                    <style jsx>{`
+    @keyframes spin-slow-gradient {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .animate-spin-slow-gradient {
+      animation: spin-slow-gradient 8s linear infinite;
+    }
+  `}</style>
                 </div>
+
+
             </div>
 
             {/* Hireme popup component */}

@@ -7,6 +7,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+         nunito: ['Nunito', 'sans-serif'],
+      },
       keyframes: {
         slideUpAndFadeIn: {
           '0%': { transform: 'translateY(10px) scale(0.95)', opacity: '0' },
