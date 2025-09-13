@@ -41,7 +41,7 @@ classifier.addDocument("contact utpal", "contact");
 
 // Jokes / small talk / fun
 classifier.addDocument("tell me a joke", "joke");
-classifier.addDocument("tell me one more  joke", "joke1");
+classifier.addDocument("tell me one more joke", "joke1");
 classifier.addDocument("i am bored", "joke");
 classifier.addDocument("how old are you", "age");
 classifier.addDocument("do you love me", "love_user");
