@@ -5,54 +5,59 @@ import ChatBot from "./ChatBot";
 const AnimatedBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(true);
-  const [hasMoved, setHasMoved] = useState(false);
+  const [draggedDistance, setDraggedDistance] = useState(0);
   const nodeRef = useRef(null);
+  const avatarRef = useRef(null);
 
-  // Auto-hide greeting after 5 seconds
   useEffect(() => {
     const timer = setTimeout(() => setShowGreeting(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleDrag = () => {
-    // This function is called on every drag movement
-    setHasMoved(true);
+  const handleStart = () => {
+    setDraggedDistance(0);
   };
 
-  const handleAvatarClick = () => {
-    // Only open/close the chat if the user hasn't dragged the bot
-    if (!hasMoved) {
-      setIsOpen((prev) => !prev);
+  const handleDrag = (e, data) => {
+    setDraggedDistance(
+      (prev) => prev + Math.abs(data.deltaX) + Math.abs(data.deltaY)
+    );
+  };
+
+  const handleStop = (e) => {
+    if (draggedDistance < 5) {
+      if (avatarRef.current && avatarRef.current.contains(e.target)) {
+        setIsOpen((prev) => !prev);
+      }
     }
-    // Reset the `hasMoved` state after the click or drag is done
-    setHasMoved(false);
   };
 
   return (
-    <Draggable nodeRef={nodeRef} onDrag={handleDrag} onStop={() => setHasMoved(false)}>
+    <Draggable
+      nodeRef={nodeRef}
+      onStart={handleStart}
+      onDrag={handleDrag}
+      onStop={handleStop}
+      cancel=".chat-window, input, textarea, button" // ⬅️ stop drag inside chat UI
+    >
       <div
         ref={nodeRef}
-        className="fixed bottom-6 right-6 z-[1000] lg:bottom-10 lg:right-10 cursor-grab"
+        className="fixed bottom-6 right-6 z-[1000] lg:bottom-10 lg:right-10 cursor-grab select-none"
       >
-        {/* Bot Avatar (Draggable and Clickable) */}
-        <div
-          className="relative z-40"
-          onClick={handleAvatarClick}
-        >
+        {/* Bot Avatar */}
+        <div ref={avatarRef} className="relative z-40">
           <img
             src="./chatbotimage.png"
             alt="Chat Bot"
             className="w-20 h-20 md:w-22 md:h-22 rounded-full shadow-xl border-4 border-blue-500 hover:border-blue-600 hover:scale-105 transition-all duration-300 ease-in-out object-cover"
             style={{ filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.4))" }}
           />
-
-          {/* Pulsing indicator */}
           {!isOpen && (
             <span className="absolute top-1 -right-1 block h-4 w-4 rounded-full ring-3 ring-white bg-green-400 animate-pulse"></span>
           )}
         </div>
 
-        {/* Auto-greeting bubble */}
+        {/* Greeting bubble */}
         {showGreeting && !isOpen && (
           <div
             className="absolute bottom-24 right-0 bg-gradient-to-r from-blue-400 to-purple-500 text-white
@@ -63,11 +68,11 @@ const AnimatedBot = () => {
           </div>
         )}
 
-        {/* Chat Window */}
+        {/* Chat window */}
         {isOpen && (
           <div
-            className="absolute z-[999] bottom-24 right-0 w-[90vw] sm:w-[380px] max-h-[80vh]
-                       transform origin-bottom-right animate-slideUpAndFadeIn"
+            className="chat-window absolute z-[999] bottom-24 right-0 w-[90vw] sm:w-[380px] max-h-[80vh]
+                       transform origin-bottom-right animate-slideUpAndFadeIn bg-white rounded-lg shadow-xl overflow-hidden"
           >
             <ChatBot />
           </div>

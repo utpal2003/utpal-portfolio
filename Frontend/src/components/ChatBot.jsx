@@ -6,31 +6,38 @@ const ChatBot = () => {
     { sender: "bot", text: "Hi, I am Utpal's assistant 💁‍♀️. How can I help you?" },
   ]);
   const [input, setInput] = useState("");
+  const [typing, setTyping] = useState(false); // NEW
   const chatEndRef = useRef(null);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, typing]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
 
     const userMsg = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+
+    // show typing indicator
+    setTyping(true);
 
     try {
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/chat`, { message: input });
       const botReply = res.data.reply || "Sorry, I didn't understand that 😅.";
+
+      // hide typing and show real reply
+      setTyping(false);
       setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
     } catch (error) {
       console.error("Chat error:", error);
+      setTyping(false);
       setMessages((prev) => [
         ...prev,
         { sender: "bot", text: "⚠️ Error connecting to server." },
       ]);
     }
-
-    setInput("");
   };
 
   return (
@@ -54,6 +61,20 @@ const ChatBot = () => {
             </div>
           </div>
         ))}
+
+        {/* Typing Indicator */}
+        {typing && (
+          <div className="flex justify-start">
+            <div
+              className="px-3 py-2 rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-1"
+            >
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></span>
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></span>
+            </div>
+          </div>
+        )}
+
         <div ref={chatEndRef} />
       </div>
 
