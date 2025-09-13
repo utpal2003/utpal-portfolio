@@ -150,7 +150,7 @@ const Projects = () => {
                     ))}
 
                     <a href=""
-                        class="inline-block px-6 py-3 text-white font-semibold text-lg rounded-2xl 
+                        className="inline-block px-6 py-3 text-white font-semibold text-lg rounded-2xl 
           bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg 
           hover:from-pink-500 hover:to-purple-500 
           transition duration-300 ease-in-out transform hover:scale-105 hover:underline">

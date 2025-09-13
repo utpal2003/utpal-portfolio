@@ -29,18 +29,18 @@ const Home = () => {
             url: "https://leetcode.com/u/utpal2003/",
             color: "#FFA116",
         },
-        {
-            name: "Facebook",
-            icon: FaFacebook,
-            url: "https://www.facebook.com/ut.p.al.148380/",
-            color: "#1877F2",
-        },
-        {
-            name: "Instagram",
-            icon: FaInstagram,
-            url: "https://www.instagram.com/say_utpal_18/",
-            color: "#E1306C",
-        },
+        // {
+        //     name: "Facebook",
+        //     icon: FaFacebook,
+        //     url: "https://www.facebook.com/ut.p.al.148380/",
+        //     color: "#1877F2",
+        // },
+        // {
+        //     name: "Instagram",
+        //     icon: FaInstagram,
+        //     url: "https://www.instagram.com/say_utpal_18/",
+        //     color: "#E1306C",
+        // },
         {
             name: "WhatsApp",
             icon: FaWhatsapp,

@@ -1,46 +1,63 @@
 import React, { useEffect, useRef, useState } from 'react';
+
+
+// ✅ Imports
 import {
   FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs,
-  FaGithub, FaGitAlt, FaNpm, FaJava, FaDocker,
-} from 'react-icons/fa';
+  FaGithub, FaGitAlt, FaNpm, FaJava, FaDocker,FaAws 
+} from "react-icons/fa";
 import {
   SiTailwindcss, SiExpress, SiMongodb, SiMysql,
-  SiPython, SiC, SiPostman, SiCplusplus
-} from 'react-icons/si';
+  SiPython, SiC, SiPostman, SiCplusplus, 
+  SiRedux, SiSocketdotio, SiRender ,SiJsonwebtokens 
+} from "react-icons/si";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { FaBootstrap } from "react-icons/fa6";
+import { TbApi } from "react-icons/tb";
+import { IoLogoVercel } from "react-icons/io5";
 
-// Tech stack categories
+
 const techStack = {
   Languages: [
-    { name: 'C', icon: <SiC className="text-blue-600" /> },
-    { name: 'C++', icon: <SiCplusplus className="text-gray-700" /> },
-    { name: 'Java', icon: <FaJava className="text-red-600" /> },
-    { name: 'Python', icon: <SiPython className="text-yellow-500" /> },
-    { name: 'HTML5', icon: <FaHtml5 className="text-orange-600" /> },
-    { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
-    { name: 'JavaScript', icon: <FaJsSquare className="text-yellow-400" /> },
+    { name: "C", icon: <SiC className="text-blue-600" /> },
+    { name: "C++", icon: <SiCplusplus className="text-gray-700" /> },
+    { name: "Java", icon: <FaJava className="text-red-600" /> },
+    { name: "Python", icon: <SiPython className="text-yellow-500" /> },
+    { name: "HTML5", icon: <FaHtml5 className="text-orange-600" /> },
+    { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
+    { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" /> },
   ],
   Frameworks: [
-    { name: 'React', icon: <FaReact className="text-cyan-400" /> },
-    { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-    { name: 'Express.js', icon: <SiExpress className="text-gray-500" /> },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" /> },
-    { name: 'Bootstrap', icon: <FaBootstrap className="text-purple-600" /> },
+    { name: "React", icon: <FaReact className="text-cyan-400" /> },
+    { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
+    { name: "Express.js", icon: <SiExpress className="text-gray-500" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" /> },
+    { name: "Bootstrap", icon: <FaBootstrap className="text-purple-600" /> },
+    { name: "Redux Toolkit", icon: <SiRedux className="text-purple-500" /> },
+    { name: "Socket.io", icon: <SiSocketdotio className="text-black dark:text-white" /> },
+    { name: "REST API", icon: <TbApi className="text-green-600" /> },
   ],
   Databases: [
-    { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
-    { name: 'MySQL', icon: <SiMysql className="text-blue-600" /> },
+    { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+    { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
   ],
   Tools: [
-    { name: 'Git', icon: <FaGitAlt className="text-red-500" /> },
-    { name: 'GitHub', icon: <FaGithub className="text-black dark:text-white" /> },
-    { name: 'VS Code', icon: <BiLogoVisualStudio className="text-blue-500" /> },
-    { name: 'Postman', icon: <SiPostman className="text-orange-600" /> },
-    { name: 'NPM', icon: <FaNpm className="text-red-600" /> },
-    { name: 'Docker', icon: <FaDocker className="text-blue-400" /> },
+    { name: "Git", icon: <FaGitAlt className="text-red-500" /> },
+    { name: "GitHub", icon: <FaGithub className="text-black dark:text-white" /> },
+    { name: "VS Code", icon: <BiLogoVisualStudio className="text-blue-500" /> },
+    { name: "Postman", icon: <SiPostman className="text-orange-600" /> },
+    { name: "NPM", icon: <FaNpm className="text-red-600" /> },
+    { name: "Docker", icon: <FaDocker className="text-blue-400" /> },
+    { name: "JWT", icon: <SiJsonwebtokens  className="text-yellow-500" /> },
+  ],
+  Deployment: [
+    { name: "AWS", icon: <FaAws className="text-orange-500" /> },
+    { name: "Vercel", icon: <IoLogoVercel   className="text-black dark:text-white" /> },
+    { name: "Render", icon: <SiRender  className="text-indigo-600" /> },
   ],
 };
+
+
 
 const useInView = (options) => {
   const [inView, setInView] = useState(false);
