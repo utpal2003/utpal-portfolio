@@ -76,7 +76,7 @@ const AnimatedBot = () => {
             className="absolute bottom-20 right-0 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium px-4 py-2 rounded-xl shadow-xl animate-slideUpAndFade w-max max-w-[250px] transform origin-bottom-right"
           >
             👋 Hello! How can I help you?
-            <div className="absolute -bottom-2 right-4 w-3 h-3 bg-purple-600 transform rotate-45"></div>
+            <div className="absolute -bottom-1 right-4 w-3 h-3 bg-purple-600 transform rotate-45"></div>
           </div>
         )}
 
@@ -84,27 +84,35 @@ const AnimatedBot = () => {
         {isOpen && (
           <div
             className="chat-window fixed bottom-12 right-4 w-[calc(100vw-32px)] sm:w-[380px] max-h-[80vh] 
-               bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 z-[999] animate-scaleIn"
+       bg-white dark:bg-gray-900 rounded-xl shadow-2xl overflow-hidden 
+       border border-gray-200 dark:border-gray-700 z-[999] animate-scaleIn"
           >
             {/* Chat header */}
-            <div className="flex items-center justify-between bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-3 text-white shadow-md">
+            <div className="flex items-center justify-between 
+                    bg-gradient-to-r from-blue-600 to-purple-600 
+                    dark:from-gray-800 dark:to-gray-700 
+                    px-5 py-3 text-white shadow-md">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🤖</span>
                 <h3 className="font-semibold text-lg">Utpal's Assistant</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:text-gray-200 text-xl font-bold transition-transform hover:rotate-90 duration-300"
+                className="text-white hover:text-gray-200 text-xl font-bold 
+                   transition-transform hover:rotate-90 duration-300"
               >
                 X
               </button>
             </div>
+
             {/* Chat body */}
-            <div className="h-[55vh] overflow-y-auto overflow-x-hidden p-4 bg-gray-50">
+            <div className="h-[55vh] overflow-y-auto overflow-x-hidden p-4 
+                    bg-gray-50 dark:bg-gray-800 dark:text-gray-200">
               <ChatBot />
             </div>
           </div>
         )}
+
 
       </div>
     </Draggable>

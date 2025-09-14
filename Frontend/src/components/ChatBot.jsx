@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { IoMdSend } from "react-icons/io";
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi, I am Utpal's assistant 💁‍♀️. How can I help you?" },
+    { sender: "bot", text: "Hi, I am Utpal's personal assistant 💁‍♀️. How can I help you?" },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
@@ -41,17 +42,16 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-gray-900 rounded-lg">
+    <div className="flex flex-col h-full bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto mb-4 space-y-3 px-1 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
+      <div className="flex-1 overflow-y-auto mb-4 mt-4 space-y-3 px-1 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-[80%] px-4 py-3 rounded-3xl break-words transform transition-all duration-300 ease-in-out text-sm md:text-base ${
-                msg.sender === "user"
-                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-sm shadow-md"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-sm border border-gray-200 dark:border-gray-700 shadow-sm"
-              }`}
+              className={`max-w-[80%] px-4 py-3 rounded-3xl break-words transform transition-all duration-300 ease-in-out text-sm md:text-base ${msg.sender === "user"
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-sm shadow-md"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-sm border border-gray-200 dark:border-gray-700 shadow-sm"
+                }`}
             >
               {msg.text}
             </div>
@@ -84,9 +84,9 @@ const ChatBot = () => {
           className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 active:scale-95"
           aria-label="Send message"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-          </svg>
+          <IoMdSend
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl  cursor-pointer"
+          />
         </button>
       </div>
     </div>
