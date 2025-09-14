@@ -6,7 +6,7 @@ const ChatBot = () => {
     { sender: "bot", text: "Hi, I am Utpal's assistant 💁‍♀️. How can I help you?" },
   ]);
   const [input, setInput] = useState("");
-  const [typing, setTyping] = useState(false); // NEW
+  const [typing, setTyping] = useState(false);
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -41,49 +41,39 @@ const ChatBot = () => {
   };
 
   return (
-    <div
-      className="bg-gradient-to-br from-white to-blue-50 dark:from-gray-900 dark:to-gray-800
-                 border border-gray-300 dark:border-gray-600 rounded-2xl shadow-xl p-3 sm:p-4 flex flex-col
-                 w-[90vw] sm:w-[360px] h-[70vh] sm:h-[380px] max-h-[80vh]"
-    >
+    <div className="flex flex-col h-full bg-white dark:bg-gray-900 rounded-lg">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto mb-2 space-y-2 pr-1 scroll-smooth">
+      <div className="flex-1 overflow-y-auto mb-4 space-y-3 px-1 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-[75%] px-3 py-2 rounded-2xl break-words transform transition-all duration-300 ease-in-out
-    ${msg.sender === "user"
-                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-none shadow-md hover:shadow-lg"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm"
-                }`}
+              className={`max-w-[80%] px-4 py-3 rounded-3xl break-words transform transition-all duration-300 ease-in-out text-sm md:text-base ${
+                msg.sender === "user"
+                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-sm shadow-md"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-bl-sm border border-gray-200 dark:border-gray-700 shadow-sm"
+              }`}
             >
               {msg.text}
             </div>
           </div>
         ))}
-
         {/* Typing Indicator */}
         {typing && (
           <div className="flex justify-start">
-            <div
-              className="px-3 py-2 rounded-2xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-1"
-            >
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></span>
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></span>
+            <div className="px-4 py-3 rounded-3xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-bl-sm border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-1">
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-pulse-fast delay-0"></span>
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-pulse-fast delay-150"></span>
+              <span className="w-2 h-2 bg-gray-500 rounded-full animate-pulse-fast delay-300"></span>
             </div>
           </div>
         )}
-
         <div ref={chatEndRef} />
       </div>
 
       {/* Input Field */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 mt-auto p-2 border-t dark:border-gray-700 bg-white dark:bg-gray-900">
         <input
-          className="flex-grow px-3 py-2 border rounded-full text-sm 
-                     bg-white dark:bg-gray-800 text-black dark:text-white 
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-grow px-4 py-2 border border-gray-300 rounded-full text-sm md:text-base bg-gray-50 dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -91,10 +81,12 @@ const ChatBot = () => {
         />
         <button
           onClick={sendMessage}
-          className="bg-blue-600 text-white px-4 py-2 rounded-full 
-                     hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 active:scale-95"
+          aria-label="Send message"
         >
-          Send
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
         </button>
       </div>
     </div>
