@@ -8,6 +8,7 @@ import TechStack from './pages/TechStack'
 import Workxperience from './pages/Workxperience'
 import Contactpage from '../src/components/contact'
 import AnimatedBot from './components/AnimatedBot'
+import { useEffect } from "react";
 
 useEffect(() => {
   fetch(`${import.meta.env.VITE_BACKEND_URL}/api/heartbeat`)
