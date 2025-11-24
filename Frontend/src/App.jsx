@@ -9,6 +9,10 @@ import Workxperience from './pages/Workxperience'
 import Contactpage from '../src/components/contact'
 import AnimatedBot from './components/AnimatedBot'
 
+useEffect(() => {
+  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/heartbeat`)
+    .catch(err => console.log("Prewarm failed:", err));
+}, []);
 
 function App() {
 
