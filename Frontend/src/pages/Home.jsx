@@ -1,59 +1,139 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Typewriter from 'typewriter-effect';
-import { FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { SiLeetcode } from "react-icons/si";
-import { useState } from 'react';
-import Hireme from '../components/Hireme';
+import { FaLinkedin, FaGithub, FaWhatsapp, FaDownload } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
+import Hireme from '../components/Hireme'; // Assuming Hireme component is imported
+
+// --- Download Confirmation Modal Component (Integrated) ---
+const DownloadConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
+    if (!isOpen) return null;
+
+    return (
+        // Overlay - handles the background and closing on outside click
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70 backdrop-blur-sm transition-opacity duration-300"
+            onClick={onClose}
+        >
+            {/* Modal Content - prevents closing on click inside */}
+            <div
+                className="w-full max-w-sm md:max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 transform transition-all duration-300 scale-100 ease-out animate-scale-in-modal"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header with Icon */}
+                <div className="flex flex-col items-center border-b pb-4 mb-4 border-gray-200 dark:border-gray-700">
+                    <FaDownload className="text-5xl text-purple-600 dark:text-purple-400 mb-3 animate-bounce-subtle" />
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center">
+                        Confirm Download
+                    </h3>
+                </div>
+
+                {/* Body Content */}
+                <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
+                    <span className="font-semibold">Hey! Are you sure</span> you want to download Utpal's Portfolio/CV?
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex gap-4">
+                    {/* Cancel Button */}
+                    <button
+                        onClick={onClose}
+                        className="flex-1 px-4 py-2 text-sm font-semibold rounded-lg shadow-md
+                                   bg-gray-200 text-gray-800 hover:bg-gray-300
+                                   dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600
+                                   transition-colors duration-200 transform hover:scale-[1.02]"
+                    >
+                        Cancel
+                    </button>
+
+                    {/* Confirm Button */}
+                    <button
+                        onClick={onConfirm}
+                        className="flex-1 px-4 py-2 text-sm font-semibold rounded-lg shadow-md
+                                   text-white bg-gradient-to-r from-purple-500 to-indigo-600
+                                   hover:from-purple-600 hover:to-indigo-700
+                                   focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-800
+                                   transition-all duration-300 transform hover:scale-[1.02]"
+                    >
+                        Yes, Download!
+                    </button>
+                </div>
+            </div>
+
+            {/* Local Styles for Modal Animations */}
+            <style jsx>{`
+                @keyframes scale-in-modal {
+                    from { opacity: 0; transform: scale(0.8); }
+                    to { opacity: 1; transform: scale(1); }
+                }
+                .animate-scale-in-modal {
+                    animation: scale-in-modal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+                }
+                @keyframes bounce-subtle {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-3px); }
+                }
+                .animate-bounce-subtle {
+                    animation: bounce-subtle 1.5s infinite ease-in-out;
+                }
+            `}</style>
+        </div>
+    );
+};
+// --- End Download Confirmation Modal Component ---
 
 
 const Home = () => {
-    // State to control the visibility of the Hireme popup
+    // State for the Hireme popup
     const [isHiremeOpen, setIsHiremeOpen] = useState(false);
+    // New state for the Resume Download Confirmation popup
+    const [isDownloadConfirmOpen, setIsDownloadConfirmOpen] = useState(false);
+
+    const RESUME_PATH = '/mymcaportfolio.pdf';
+    const RESUME_FILENAME = 'Utpal-Barman-cv.pdf';
 
     const socialLinks = [
         {
-            name: "LinkedIn",
+            name: 'LinkedIn',
             icon: FaLinkedin,
-            url: "https://www.linkedin.com/in/utpalbarman07/",
-            color: "#0A66C2",
+            url: 'https://www.linkedin.com/in/utpalbarman07/',
+            color: '#0A66C2',
         },
         {
-            name: "GitHub",
+            name: 'GitHub',
             icon: FaGithub,
-            url: "https://github.com/utpal2003",
-            color: "#181717",
+            url: 'https://github.com/utpal2003',
+            color: '#181717',
         },
         {
-            name: "LeetCode",
+            name: 'LeetCode',
             icon: SiLeetcode,
-            url: "https://leetcode.com/u/utpal2003/",
-            color: "#FFA116",
+            url: 'https://leetcode.com/u/utpal2003/',
+            color: '#FFA116',
         },
-        // {
-        //     name: "Facebook",
-        //     icon: FaFacebook,
-        //     url: "https://www.facebook.com/ut.p.al.148380/",
-        //     color: "#1877F2",
-        // },
-        // {
-        //     name: "Instagram",
-        //     icon: FaInstagram,
-        //     url: "https://www.instagram.com/say_utpal_18/",
-        //     color: "#E1306C",
-        // },
         {
-            name: "WhatsApp",
+            name: 'WhatsApp',
             icon: FaWhatsapp,
-            url: "https://wa.me/+919064205304",
-            color: "#25D366",
+            url: 'https://wa.me/+919064205304',
+            color: '#25D366',
         },
     ];
 
-    const handleHiremeSubmit = (hiremeData) => {
-        console.log("Hire Me form data received in Home:", hiremeData);
+    const handleHiremeSubmit = useCallback((hiremeData) => {
+        console.log('Hire Me form data received in Home:', hiremeData);
+        setIsHiremeOpen(false); // Close the Hireme popup
+    }, []);
 
-        setIsHiremeOpen(false); // Close the popup after submission
-    };
+    // Function to initiate the resume download
+    const handleDownloadResume = useCallback(() => {
+        // Programmatically create and click an anchor tag to trigger the download
+        const link = document.createElement('a');
+        link.href = RESUME_PATH;
+        link.download = RESUME_FILENAME;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsDownloadConfirmOpen(false); // Close modal after initiating download
+    }, [RESUME_PATH, RESUME_FILENAME]);
 
     return (
         <div
@@ -63,12 +143,10 @@ const Home = () => {
                        bg-gradient-to-br from-[#e0f7fa] to-[#e1bee7] dark:from-[#0f172a] dark:to-[#1e293b]"
         >
             {/* GLOBAL ANIMATED BACKGROUND ELEMENTS */}
-            {/* Large orbiting ring (mimics the screenshot's main circle) */}
             <div className="absolute w-[800px] h-[800px] rounded-full border border-blue-300 opacity-30 z-0 animate-spin-slow-global origin-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute w-[600px] h-[600px] rounded-full border border-blue-400 opacity-40 z-0 animate-spin-faster-global origin-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute w-[1000px] h-[1000px] rounded-full border border-blue-200 opacity-20 z-0 animate-spin-slower-global origin-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-
-            {/* Scattered Animated Dots and Stars for the entire background */}
+            {/* Scattered Animated Dots and Stars */}
             {[...Array(20)].map((_, i) => (
                 <div
                     key={`dot-${i}`}
@@ -97,23 +175,25 @@ const Home = () => {
                     }}
                 >★</span>
             ))}
+            {/* END GLOBAL ANIMATED BACKGROUND ELEMENTS */}
 
 
             <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-7xl mt-2 md:mt-0 gap-2 sm:gap-10 z-10 p-2 sm:p-4 relative">
+                
                 {/* Text Section */}
                 <div className="text-center md:text-left mt-0 md:w-1/2">
                     <h2
                         className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight animate-fade-in-down 
-               bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
-               bg-clip-text text-transparent"
+                bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+                bg-clip-text text-transparent"
                     >
                         Hi, I am Utpal Barman
                     </h2>
 
                     <h1
                         className="text-xl sm:text-2xl md:text-4xl mt-3 font-semibold animate-fade-in-up 
-               bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
-               bg-clip-text text-transparent"
+                bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
+                bg-clip-text text-transparent"
                     >
                         <Typewriter
                             options={{
@@ -126,43 +206,38 @@ const Home = () => {
 
                     {/* Buttons */}
                     <div className="my-6 flex flex-wrap items-center gap-4 justify-center md:justify-start px-8 animate-fade-in-up-delay-1">
-                        {/* Hire Me Button - Modified to open the popup */}
+                        
+                        {/* Hire Me Button - Opens the Hireme popup */}
                         <button
-                            onClick={() => setIsHiremeOpen(true)} // Set state to true to open popup
+                            onClick={() => setIsHiremeOpen(true)}
                             type="button"
                             className="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:from-green-600 hover:to-green-800
-                                       focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
-                                       font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 shadow-md hover:scale-105
-                                       flex-grow sm:flex-none sm:w-auto"
+                                     focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
+                                     font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 shadow-md hover:scale-105
+                                     flex-grow sm:flex-none sm:w-auto"
                         >
                             Hire Me
                         </button>
 
-
-                        {/* My Resume Button */}
-                        <a
-                            href="/mymcaportfolio.pdf"
-                            download="Utpal-Barman-cv.pdf"
-                            className="w-full sm:w-auto flex-grow sm:flex-none"
+                        {/* My Resume Button - Opens the NEW confirmation popup */}
+                        <button
+                            onClick={() => setIsDownloadConfirmOpen(true)} // Open the confirmation modal
+                            type="button"
+                            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 
+                hover:from-purple-600 hover:to-purple-800
+                focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
+                font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 
+                shadow-md hover:scale-105 w-full sm:w-auto flex-grow sm:flex-none"
                         >
-                            <button
-                                type="button"
-                                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 
-               hover:from-purple-600 hover:to-purple-800
-               focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
-               font-semibold rounded-lg text-sm px-6 py-2.5 text-center transition-all duration-300 
-               shadow-md hover:scale-105 w-full"
-                            >
-                                My Resume
-                            </button>
-                        </a>
+                            My Resume
+                        </button>
 
                     </div>
 
                     {/* Social Icons */}
                     <div className="mt-8 flex justify-center md:justify-start gap-4 flex-wrap sm:mb-0 mb-4 animate-fade-in-up-delay-2">
                         {socialLinks.map(({ name, icon: Icon, url, color }) => {
-                            const isDarkSensitive = name === 'GitHub'; // GitHub icon needs special dark mode handling
+                            const isDarkSensitive = name === 'GitHub';
 
                             return (
                                 <a
@@ -171,8 +246,8 @@ const Home = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group relative w-12 h-12 flex items-center justify-center rounded-full overflow-hidden
-                                               border-2 border-transparent transition-all duration-300 ease-out
-                                               hover:scale-110 hover:shadow-lg focus:outline-none"
+                                             border-2 border-transparent transition-all duration-300 ease-out
+                                             hover:scale-110 hover:shadow-lg focus:outline-none"
                                     aria-label={name}
                                 >
                                     {/* Pulsing ring animation */}
@@ -192,69 +267,58 @@ const Home = () => {
                                     />
                                     {/* Dark mode hover override for GitHub specifically */}
                                     <style>{`
-                                        .dark .group:hover svg { color: ${name === 'GitHub' ? '#fff' : 'white'} !important; }
-                                        .group:hover svg { color: white !important; }
-                                    `}</style>
+                                         .dark .group:hover svg { color: ${name === 'GitHub' ? '#fff' : 'white'} !important; }
+                                         .group:hover svg { color: white !important; }
+                                     `}</style>
                                 </a>
                             );
                         })}
                     </div>
                 </div>
 
-                {/* Image Section*/}
+                {/* Image Section */}
                 <div className="relative flex justify-center items-center min-h-[300px] md:min-h-[400px] lg:min-h-[500px] p-4">
-
                     <div className="relative w-[12rem] h-[12rem] sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 p-1 rounded-full overflow-visible
-      group transform transition-all duration-500 ease-in-out
-      hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.4)]
-      ">
-
+         group transform transition-all duration-500 ease-in-out
+         hover:scale-105 hover:shadow-[0_20px_60px_rgba(99,102,241,0.4)]
+         ">
                         {/* Gradient Glow Ring */}
                         <div className="absolute inset-0 rounded-full
-          bg-gradient-to-r from-purple-700 via-indigo-700 to-pink-700
-          animate-spin-slow-gradient opacity-75
-          filter blur-xl
-          group-hover:opacity-100
-          transition-opacity duration-500">
+             bg-gradient-to-r from-purple-700 via-indigo-700 to-pink-700
+             animate-spin-slow-gradient opacity-75
+             filter blur-xl
+             group-hover:opacity-100
+             transition-opacity duration-500">
                         </div>
 
                         {/* Profile Container */}
                         <div className="relative w-full h-full rounded-full overflow-hidden
-          shadow-2xl border-4 border-white dark:border-gray-800
-          bg-white dark:bg-gray-900
-          transform transition-all duration-500 ease-in-out
-          group-hover:scale-95">
-
+             shadow-2xl border-4 border-white dark:border-gray-800
+             bg-white dark:bg-gray-900
+             transform transition-all duration-500 ease-in-out
+             group-hover:scale-95">
                             {/* Profile Image */}
-                            {/* <img
-                                className="w-full h-full object-cover object-top filter grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                            <img
+                                className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-110"
                                 src="/MY-PHOTO.jpeg"
                                 alt="Utpal Barman"
-                            /> */}
-                            <img
-  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-110"
-  src="/MY-PHOTO.jpeg"
-  alt="Utpal Barman"
-/>
-
-
-
+                            />
                             {/* Hover Overlay */}
                             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full"></div>
                         </div>
                     </div>
 
-                    {/* React style block */}
+                    {/* React style block (Image Animation) */}
                     <style jsx>{`
-    @keyframes spin-slow-gradient {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .animate-spin-slow-gradient {
-      animation: spin-slow-gradient 8s linear infinite;
-    }
-  `}</style>
+                        @keyframes spin-slow-gradient {
+                          0% { transform: rotate(0deg); }
+                          100% { transform: rotate(360deg); }
+                        }
+                    
+                        .animate-spin-slow-gradient {
+                          animation: spin-slow-gradient 8s linear infinite;
+                        }
+                    `}</style>
                 </div>
 
 
@@ -263,7 +327,15 @@ const Home = () => {
             {/* Hireme popup component */}
             <Hireme isOpen={isHiremeOpen} onClose={() => setIsHiremeOpen(false)} onSubmit={handleHiremeSubmit} />
 
-            {/* Keyframes for animations */}
+            {/* NEW Download Confirmation Modal (Integrated) */}
+            <DownloadConfirmationModal 
+                isOpen={isDownloadConfirmOpen} 
+                onClose={() => setIsDownloadConfirmOpen(false)} 
+                onConfirm={handleDownloadResume} 
+            />
+
+
+            {/* Keyframes for animations (Retained as is) */}
             <style>{`
                 @keyframes fade-in-down {
                     from { opacity: 0; transform: translateY(-20px); }
