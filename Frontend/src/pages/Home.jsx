@@ -110,12 +110,12 @@ const Home = () => {
             url: 'https://leetcode.com/u/utpal2003/',
             color: '#FFA116',
         },
-        {
-            name: 'WhatsApp',
-            icon: FaWhatsapp,
-            url: 'https://wa.me/+919064205304',
-            color: '#25D366',
-        },
+        // {
+        //     name: 'WhatsApp',
+        //     icon: FaWhatsapp,
+        //     url: 'https://wa.me/+919064205304',
+        //     color: '#25D366',
+        // },
     ];
 
     const handleHiremeSubmit = useCallback((hiremeData) => {
