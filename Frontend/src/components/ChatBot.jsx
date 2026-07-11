@@ -43,6 +43,9 @@ const ChatBot = () => {
 
   return (
     <div className="flex flex-col h-full bg-white dark:bg-gray-900 rounded-lg overflow-hidden">
+      <h2 className="text-center bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 py-3 px-4 text-sm font-semibold border-b border-indigo-300 dark:border-indigo-700">
+        🤖 Utpal is currently upgrading the AI Assistant with smarter features. Coming Soon!
+      </h2>
       {/* Messages */}
       <div className="flex-1 overflow-y-auto mb-4 mt-4 space-y-3 px-1 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-transparent scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
         {messages.map((msg, idx) => (
@@ -71,7 +74,7 @@ const ChatBot = () => {
       </div>
 
       {/* Input Field */}
-      <div className="flex items-center gap-2 mt-auto p-2 border-t dark:border-gray-700 bg-white dark:bg-gray-900">
+      <div className="flex items-center gap-2 mt-auto p-2 border-t dark:border-gray-700 bg-white dark:bg-gray-900 ">
         <input
           className="flex-grow px-4 py-2 border border-gray-300 rounded-full text-sm md:text-base bg-gray-50 dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
           placeholder="Type a message..."
@@ -79,7 +82,7 @@ const ChatBot = () => {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
-        <button
+        {/* <button
           onClick={sendMessage}
           className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 active:scale-95"
           aria-label="Send message"
@@ -87,7 +90,7 @@ const ChatBot = () => {
           <IoMdSend
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl  cursor-pointer"
           />
-        </button>
+        </button> */}
       </div>
     </div>
   );
