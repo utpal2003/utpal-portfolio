@@ -5,117 +5,124 @@ import ChatBot from "./ChatBot";
 const AnimatedBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(true);
-  const [draggedDistance, setDraggedDistance] = useState(0);
+
   const nodeRef = useRef(null);
-  const avatarRef = useRef(null);
+  const draggedRef = useRef(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowGreeting(false), 6000);
+    const timer = setTimeout(() => {
+      setShowGreeting(false);
+    }, 6000);
+
     return () => clearTimeout(timer);
   }, []);
 
-  // Lock body scroll when chat is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isOpen]);
-
-  const handleStart = () => setDraggedDistance(0);
-
-  const handleDrag = (e, data) => {
-    setDraggedDistance(
-      (prev) => prev + Math.abs(data.deltaX) + Math.abs(data.deltaY)
-    );
+  const handleStart = () => {
+    draggedRef.current = false;
   };
 
-  const handleStop = (e) => {
-    if (draggedDistance < 5) {
-      if (avatarRef.current && avatarRef.current.contains(e.target)) {
-        setIsOpen((prev) => !prev);
-      }
+  const handleDrag = () => {
+    draggedRef.current = true;
+  };
+
+  const handleAvatarClick = () => {
+    if (draggedRef.current) {
+      draggedRef.current = false;
+      return;
     }
+
+    setIsOpen((prev) => !prev);
   };
 
   return (
-    <Draggable
-      nodeRef={nodeRef}
-      onStart={handleStart}
-      onDrag={handleDrag}
-      onStop={handleStop}
-      bounds="body"
-      cancel=".chat-window, input, textarea, button"
-    >
-      <div
-        ref={nodeRef}
-        className="fixed bottom-4 right-4 z-[1000] lg:bottom-8 lg:right-8 cursor-grab select-none"
+    <>
+      {/* Floating Avatar */}
+      <Draggable
+        nodeRef={nodeRef}
+        onStart={handleStart}
+        onDrag={handleDrag}
+        bounds="body"
       >
-        {/* Bot Avatar (FAB style) */}
         <div
-          ref={avatarRef}
-          role="button"
-          aria-label="Chatbot toggle"
-          className="relative z-40 transition-transform duration-300 active:scale-95"
+          ref={nodeRef}
+          className="fixed bottom-5 right-5 z-[9999] cursor-grab active:cursor-grabbing select-none"
         >
-          <img
-            src="./chatbotimage.png"
-            alt="Chat Bot"
-            className="w-14 h-14 md:w-16 md:h-16 rounded-full shadow-lg border-4 border-blue-500 hover:border-blue-600 transition-all duration-300 ease-in-out object-cover"
-            style={{ filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.3))" }}
-          />
-          {!isOpen && (
-            <span className="absolute top-0 -right-1 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400 animate-pulse"></span>
+          {/* Greeting */}
+          {showGreeting && !isOpen && (
+            <div className="absolute bottom-20 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap animate-slideUpAndFade">
+              👋 Hello! How can I help you?
+            </div>
           )}
+
+          {/* Avatar */}
+          <button
+            type="button"
+            onClick={handleAvatarClick}
+            className="relative outline-none"
+          >
+            <img
+              src="/chatbotimage.png"
+              alt="Chat Bot"
+              className="w-16 h-16 rounded-full object-cover border-4 border-blue-500 shadow-xl hover:scale-105 transition duration-300"
+            />
+
+            {!isOpen && (
+              <span className="absolute top-1 right-1 w-3 h-3 rounded-full bg-green-500 border-2 border-white animate-pulse"></span>
+            )}
+          </button>
         </div>
+      </Draggable>
 
-        {/* Greeting bubble */}
-        {showGreeting && !isOpen && (
-          <div
-            className="absolute bottom-20 right-0 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium px-4 py-2 rounded-xl shadow-xl animate-slideUpAndFade w-max max-w-[250px] transform origin-bottom-right"
-          >
-            👋 Hello! How can I help you?
-            <div className="absolute -bottom-1 right-4 w-3 h-3 bg-purple-600 transform rotate-45"></div>
-          </div>
-        )}
-
-        {/* Chat window */}
-        {isOpen && (
-          <div
-            className="chat-window fixed bottom-12 right-4 w-[calc(100vw-32px)] sm:w-[380px] max-h-[80vh] 
-       bg-white dark:bg-gray-900 rounded-xl shadow-2xl overflow-hidden 
-       border border-gray-200 dark:border-gray-700 z-[999] animate-scaleIn"
-          >
-            {/* Chat header */}
-            <div className="flex items-center justify-between 
-                    bg-gradient-to-r from-blue-600 to-purple-600 
-                    dark:from-gray-800 dark:to-gray-700 
-                    px-5 py-3 text-white shadow-md">
-              <div className="flex items-center gap-2">
-                <span className="text-xl">🤖</span>
-                <h3 className="font-semibold text-lg">Utpal's Assistant</h3>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white hover:text-gray-200 text-xl font-bold 
-                   transition-transform hover:rotate-90 duration-300"
-              >
-                X
-              </button>
+      {/* Chat Window */}
+      {isOpen && (
+        <div
+          className="
+            fixed
+            bottom-24
+            right-5
+            w-[calc(100vw-32px)]
+            sm:w-[380px]
+            h-[70vh]
+            max-h-[600px]
+            min-h-[480px]
+            bg-white
+            dark:bg-gray-900
+            rounded-2xl
+            shadow-2xl
+            border
+            border-gray-200
+            dark:border-gray-700
+            overflow-hidden
+            flex
+            flex-col
+            z-[9998]
+            animate-scaleIn
+          "
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🤖</span>
+              <h2 className="font-semibold text-lg">
+                Utpal's Assistant
+              </h2>
             </div>
 
-            {/* Chat body */}
-            <div className="h-[55vh] overflow-y-auto overflow-x-hidden p-4 
-                    bg-gray-50 dark:bg-gray-800 dark:text-gray-200">
-              <ChatBot />
-            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-2xl hover:rotate-90 transition-transform duration-300"
+            >
+              ×
+            </button>
           </div>
-        )}
 
-
-      </div>
-    </Draggable>
+          {/* Chat Body */}
+          <div className="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-800">
+            <ChatBot />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
