@@ -120,7 +120,7 @@ const ChatBot = () => {
       </div>
 
       {/* Input */}
-      <div className="border-t dark:border-gray-700 bg-white dark:bg-gray-900 p-3">
+      {/* <div className="border-t dark:border-gray-700 bg-white dark:bg-gray-900 p-3">
         <div className="flex items-center gap-2">
 
           <input
@@ -142,7 +142,7 @@ const ChatBot = () => {
           </button>
 
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
