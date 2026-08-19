@@ -88,7 +88,7 @@ const Home = () => {
     // New state for the Resume Download Confirmation popup
     const [isDownloadConfirmOpen, setIsDownloadConfirmOpen] = useState(false);
 
-    const RESUME_PATH = '/utpalnewcv.pdf';
+    const RESUME_PATH = '/utpal-profile.pdf';
     const RESUME_FILENAME = 'Utpal-Barman-cv.pdf';
 
     const socialLinks = [

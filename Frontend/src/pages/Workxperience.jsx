@@ -35,29 +35,46 @@ const WorkExperience = () => {
         </h2>
 
         <div className="space-y-14">
+
+          {/* Current Faculty Experience */}
           <ExperienceCard
-            title="Web Development Intern – Indomitech Group"
-            period="June 16, 2025 – Present"
-            description="Working as a Full Stack Developer on a comprehensive Human Resource Management System using the MERN stack. Handling frontend and backend tasks like authentication, dashboard UI, RESTful APIs, and real-time data handling."
+            title="Faculty – Computer Science | Royal SRAS Hospitality & Educational Institute"
+            period="Aug 17, 2026 – Present"
+            description="Delivering lectures and conducting practical lab sessions for BCA and B.Sc. Computer Science students. Teaching core programming concepts, data structures, and web development technologies. Designing curriculum modules, assignments, and student assessments. Mentoring students on software development projects and practical coursework."
             animation="animate-slide-in-right"
           />
 
+          {/* Web Development Internship */}
+          <ExperienceCard
+            title="Web Development Intern – Indomitech Group"
+            period="June 16, 2025 – May 31, 2026"
+            description="Worked as a Full Stack Developer on a comprehensive Human Resource Management System using the MERN stack. Handled frontend and backend development, authentication, dashboard UI, RESTful APIs, database operations, and real-time data handling."
+            animation="animate-slide-in-left"
+          />
+
+          {/* Previous Internship */}
           <ExperienceCard
             title="MERN Stack Development Internship – Euphoria GenX"
             period="Feb 21, 2024 – Apr 24, 2024"
             description="Completed a MERN stack internship focused on building a full-stack Exam Registration System with authentication, form management, backend APIs, and MongoDB data operations."
-            animation="animate-slide-in-left"
+            animation="animate-slide-in-right"
           />
 
+          {/* Technical Skills */}
           <ExperienceCard
             title="Key Tech Skills"
-            description="Proficient in JavaScript, React.js, Node.js, Express.js, MongoDB, Git, GitHub, Tailwind CSS, and REST APIs. Passionate about learning new tools and developing scalable, performant web applications."
+            description="Proficient in JavaScript, React.js, Node.js, Express.js, MongoDB, Git, GitHub, Tailwind CSS, REST APIs, and full-stack web development. Also experienced in AI-powered applications, RAG-based systems, LLM integration, and chatbot development."
             animation="animate-fade-in-up"
           />
 
+          {/* Closing Statement */}
           <div className="text-center animate-fade-in-up-delayed">
             <p className="italic text-lg text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border border-indigo-200 dark:border-indigo-700 p-6 rounded-lg shadow-xl">
-              As a fresher, I bring enthusiasm, adaptability, and a solid foundation in MERN stack development. I'm eager to contribute to innovative teams and grow as a developer through real-world challenges.
+              With experience in full-stack development and computer science education,
+              I enjoy building practical applications, sharing technical knowledge,
+              and continuously learning new technologies. I aim to combine my
+              development and teaching experience to create meaningful and
+              industry-focused solutions.
             </p>
           </div>
         </div>
@@ -65,40 +82,78 @@ const WorkExperience = () => {
 
       <style>{`
         @keyframes fade-in-down {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+
         @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+
         @keyframes fade-in-up-delayed {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+
         @keyframes slide-in-left {
-          from { opacity: 0; transform: translateX(-100px); }
-          to { opacity: 1; transform: translateX(0); }
+          from {
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
+
         @keyframes slide-in-right {
-          from { opacity: 0; transform: translateX(100px); }
-          to { opacity: 1; transform: translateX(0); }
+          from {
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
 
         .animate-fade-in-down {
           animation: fade-in-down 0.8s ease-out forwards;
         }
+
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out forwards;
           animation-delay: 0.2s;
         }
+
         .animate-fade-in-up-delayed {
           animation: fade-in-up-delayed 0.8s ease-out forwards;
           animation-delay: 0.4s;
         }
+
         .animate-slide-in-left {
           animation: slide-in-left 0.7s ease-out forwards;
         }
+
         .animate-slide-in-right {
           animation: slide-in-right 0.7s ease-out forwards;
         }

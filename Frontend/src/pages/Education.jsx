@@ -93,7 +93,7 @@ const Education = () => {
                             </h3>
                             <p className="text-gray-700 dark:text-gray-300 mb-1">Adamas University, Kolkata</p>
                             <p className="text-sm text-gray-700 dark:text-gray-400">Department : Computer Science and Engineering ( CSE)</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">August 2024 - Present</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">August 2024 - July 2026</p>
 
                             <ul className="list-disc list-inside mt-3 space-y-1 text-gray-700 dark:text-gray-300">
                                 <li>Specialized in Full-Stack Development</li>

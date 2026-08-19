@@ -4,16 +4,16 @@ import React, { useEffect, useRef, useState } from 'react';
 // ✅ Imports
 import {
   FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs,
-  FaGithub, FaGitAlt, FaNpm, FaJava, FaDocker,FaAws 
+  FaGithub, FaGitAlt, FaNpm, FaJava, FaDocker, FaAws
 } from "react-icons/fa";
 import {
   SiTailwindcss, SiExpress, SiMongodb, SiMysql,
-  SiPython, SiC, SiPostman, SiCplusplus, 
-  SiRedux, SiSocketdotio, SiRender ,SiJsonwebtokens 
+  SiPython, SiC, SiPostman, SiCplusplus,
+  SiRedux, SiSocketdotio, SiRender, SiJsonwebtokens,SiNetlify 
 } from "react-icons/si";
-import { BiLogoVisualStudio } from "react-icons/bi";
+import { BiLogoVisualStudio,BiLogoPostgresql  } from "react-icons/bi";
 import { FaBootstrap } from "react-icons/fa6";
-import { TbApi } from "react-icons/tb";
+import { TbApi, TbBrandNextjs } from "react-icons/tb";
 import { IoLogoVercel } from "react-icons/io5";
 
 
@@ -29,6 +29,7 @@ const techStack = {
   ],
   Frameworks: [
     { name: "React", icon: <FaReact className="text-cyan-400" /> },
+    { name: "Nextjs", icon: <TbBrandNextjs className='text-zinc-700' /> },
     { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
     { name: "Express.js", icon: <SiExpress className="text-gray-500" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" /> },
@@ -40,6 +41,7 @@ const techStack = {
   Databases: [
     { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
     { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+    {name : "Postgresql",icon:<BiLogoPostgresql className='text-gray-900'/>}
   ],
   Tools: [
     { name: "Git", icon: <FaGitAlt className="text-red-500" /> },
@@ -48,12 +50,13 @@ const techStack = {
     { name: "Postman", icon: <SiPostman className="text-orange-600" /> },
     { name: "NPM", icon: <FaNpm className="text-red-600" /> },
     { name: "Docker", icon: <FaDocker className="text-blue-400" /> },
-    { name: "JWT", icon: <SiJsonwebtokens  className="text-yellow-500" /> },
+    { name: "JWT", icon: <SiJsonwebtokens className="text-yellow-500" /> },
   ],
   Deployment: [
     { name: "AWS", icon: <FaAws className="text-orange-500" /> },
-    { name: "Vercel", icon: <IoLogoVercel   className="text-black dark:text-white" /> },
-    { name: "Render", icon: <SiRender  className="text-indigo-600" /> },
+    { name: "Vercel", icon: <IoLogoVercel className="text-black dark:text-white" /> },
+    { name: "Render", icon: <SiRender className="text-indigo-600" /> },
+    {name : "Netlify", icon: <SiNetlify  className='text-teal-300'/>}
   ],
 };
 

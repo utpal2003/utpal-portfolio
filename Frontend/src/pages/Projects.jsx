@@ -5,13 +5,20 @@ import { useInView } from 'react-intersection-observer';
 const projects = [
     {
         id: 1,
+        title: "University Support AI Chatbot",
+        image: "",
+        languages: ["DistilBERT", "LLM", "RAG", "ChromaDB"],
+        link: "https://github.com/utpal2003/utpal-portfolio"
+    },
+    {
+        id: 2,
         title: "JOB HIVE",
         image: "/jobhive.png",
         languages: ["React", "Node.js", "Express.js", "MongoDB"],
         link: "https://github.com/utpal2003/online-exam-system"
     },
     {
-        id: 2,
+        id: 3,
         title: "HR MANAGEMENT SYSTEM",
         image: "/hrms.png",
         languages: ["React", "Node.js", "Express.js", "MongoDB", "TailwindCSS"],
@@ -19,28 +26,28 @@ const projects = [
     },
 
     {
-        id: 3,
+        id: 4,
         title: "Online Voting System",
         image: "/Backend.png",
         languages: ["Node.js", "Express.js", "MongoDB"],
         link: "https://github.com/utpal2003/library-management-c"
     },
     {
-        id: 4,
+        id: 5,
         title: "Portfolio Website",
         image: "/portfolio.png",
-        languages: ["React", "TailwindCSS","Express.js","NodeMailer"],
+        languages: ["React", "TailwindCSS", "Express.js", "NodeMailer"],
         link: "https://utpal-portfolio-frontend.onrender.com/"
     },
     {
-        id: 5,
+        id: 6,
         title: "Food Delivery",
         image: "/Food-delivery.png",
         languages: ["React", "Tailwind"],
-        link:""
+        link: ""
     },
     {
-        id: 6,
+        id: 7,
         title: "ONLINE QUIZ SYSTEM",
         image: "/quiz.png",
         languages: ["React", "TailwindCSS"],
@@ -54,11 +61,11 @@ const projects = [
     //     languages: ["HTML", "CSS", "JavaScript"],
     //     link: "https://tic-tac-toe-game-one-bice.vercel.app/"
     // },
-       {
-        id: 7,
+    {
+        id: 8,
         title: "Razorpay Integratin",
         image: "",
-        languages: ["Nodejs","react","Razorpay"],
+        languages: ["Nodejs", "react", "Razorpay"],
         link: ""
     }
 
