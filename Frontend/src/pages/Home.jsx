@@ -208,7 +208,7 @@ const Home = () => {
                     <div className="my-6 flex flex-wrap items-center gap-4 justify-center md:justify-start px-8 animate-fade-in-up-delay-1">
                         
                         {/* Hire Me Button - Opens the Hireme popup */}
-                        <button
+                        {/* <button
                             onClick={() => setIsHiremeOpen(true)}
                             type="button"
                             className="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:from-green-600 hover:to-green-800
@@ -217,7 +217,7 @@ const Home = () => {
                                      flex-grow sm:flex-none sm:w-auto"
                         >
                             Hire Me
-                        </button>
+                        </button> */}
 
                         {/* My Resume Button - Opens the NEW confirmation popup */}
                         <button
